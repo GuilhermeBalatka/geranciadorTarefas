@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Anexo{% endblock %}
+
+{% block body %}
+    <h1>Anexo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ anexo.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ anexo.nome }}</td>
+            </tr>
+            <tr>
+                <th>Arquivo</th>
+                <td>
+                    {% if anexo.arquivo is not null %}
+                        <a href="{{ asset('C:\laragon\www\back-end\anexo' ~ anexo.arquivo) }}" target="_blank">Ver Anexo</a>
+                    {% else %}
+                        Nenhum anexo disponível
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_anexo_index') }}">Voltar para a lista</a>
+
+    <a href="{{ path('app_anexo_edit', {'id': anexo.id}) }}">Editar</a>
+
+    {{ include('anexo/_delete_form.html.twig') }}
+{% endblock %}

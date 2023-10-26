@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tarefas{% endblock %}
+
+{% block body %}
+    <h1>Tarefas</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tarefa.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ tarefa.nome }}</td>
+            </tr>
+            <tr>
+                <th>Descricao</th>
+                <td>{{ tarefa.descricao }}</td>
+            </tr>
+            <tr>
+                <th>Prazo</th>
+                <td>{{ tarefa.prazo ? tarefa.prazo|date('d/m/Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Prioridade</th>
+                <td>{{ tarefa.prioridade }}</td>
+            </tr>
+            <tr>
+                <th>Concluida</th>
+                <td>{{ tarefa.concluida ? 'Sim' : 'Não' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+    <div class="d-flex justify-content-between">
+        <a href="{{ path('app_tarefas_index') }}" class="btn btn-primary">Voltar para lista</a>
+        <a href="{{ path('app_tarefas_edit', {'id': tarefa.id}) }}" class="btn btn-warning">Editar</a>
+        {{ include('tarefas/_delete_form.html.twig') }}
+    </div>
+
+{% endblock %}

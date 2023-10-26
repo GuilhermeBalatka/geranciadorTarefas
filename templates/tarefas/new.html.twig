@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nova Tarefa{% endblock %}
+
+{% block body %}
+    <h1>Criar nova Tarefa</h1>
+    
+    {{ include('tarefas/_form.html.twig') }}
+    
+    
+    <a href="{{ path('app_tarefas_index') }}" class="btn btn-primary">Voltar para lista</a>
+{% endblock %}

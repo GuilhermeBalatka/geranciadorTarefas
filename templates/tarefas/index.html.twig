@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gerenciador de Tarefas{% endblock %}
+
+{% block body %}
+    <h1>Tarefas</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Prazo</th>
+                <th>Prioridade</th>
+                <th>Concluída</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tarefa in tarefas %}
+            <tr>
+                <td>{{ tarefa.id }}</td>
+                <td>{{ tarefa.nome }}</td>
+                <td>{{ tarefa.descricao }}</td>
+                <td>{{ tarefa.prazo ? tarefa.prazo|date('d/m/Y') : '' }}</td>
+                <td>{{ tarefa.prioridade }}</td>
+                <td>{{ tarefa.concluida ? 'Sim' : 'Não' }}</td>
+                <td>
+                    
+                    <a href="{{ path('app_tarefas_show', {'id': tarefa.id}) }}"><img src="{{asset('img/olho.png')}}" alt="Mostrar" style="width: 20px; height: 20px;"></a>
+                    <a href="{{ path('app_tarefas_edit', {'id': tarefa.id}) }}"><img src="{{asset('img/botao-editar.png')}}" alt="Editar" style="width: 20px; height: 20px;"></a>
+                    <a href="{{ path('app_anexo_new', {'tarefaId': tarefa.id}) }}"><img src="{{asset('img/anexar-arquivo.png')}}" alt="Anexo" style="width: 20px; height: 20px;"></a>
+                    <a href="{{ path('app_anexo_index', {'tarefaId': tarefa.id}) }}" class="btn btn-secondary">Lista de Anexos</a>
+                    <a href="{{ path('app_send_email', {'tarefaId': tarefa.id}) }}" class="btn btn-primary">Enviar E-mail</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Nenhum registro encontrado</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_tarefas_new') }}" class="btn btn-primary">Criar Nova Tarefa</a>
+{% endblock %}

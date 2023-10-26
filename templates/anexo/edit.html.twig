@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Anexo{% endblock %}
+
+{% block body %}
+    <h1>Edit Anexo</h1>
+
+    {{ include('anexo/_form.html.twig', {'button_label': 'update'}) }}
+
+    <a href="{{ path('app_tarefas_index') }}">Voltar para lista</a> 
+
+    {{ include('anexo/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Tarefa{% endblock %}
+
+{% block body %}
+    <h1>Editar Tarefa</h1>
+
+    {{ include('tarefas/_form.html.twig', {'button_label': 'Salvar'}) }}
+    
+    <div class="d-flex justify-content-between mt-3">
+        <a href="{{ path('app_tarefas_index') }}" class="btn btn-primary">Voltar para lista</a>
+        {{ include('tarefas/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

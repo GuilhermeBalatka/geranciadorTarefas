@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Anexo{% endblock %}
+
+{% block body %}
+    <h1>Adicionar Anexo</h1>
+
+    {{ include('anexo/_form.html.twig') }}
+    
+    <div style="margin-top: 20px;"> 
+        <a href="{{ path('app_tarefas_index')}}" class="btn btn-primary">Voltar para as Tarefas</a>
+    </div>
+    
+{% endblock %}
